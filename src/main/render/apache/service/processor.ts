@@ -516,8 +516,7 @@ function createProcessFunctionMethod(
 }
 
 function createArgsVariable(funcDef: FunctionDefinition): Array<ts.Statement> {
-    if (funcDef.fields.length > 0) {
-        return [
+    return [
             createConstStatement(
                 COMMON_IDENTIFIERS.args,
                 ts.createTypeReferenceNode(
@@ -534,9 +533,6 @@ function createArgsVariable(funcDef: FunctionDefinition): Array<ts.Statement> {
                 ),
             ),
         ]
-    } else {
-        return []
-    }
 }
 
 function createElseForExceptions(
