@@ -1,0 +1,12 @@
+import * as ts from 'typescript';
+import { ConstDefinition, EnumDefinition, ExceptionDefinition, ServiceDefinition, StructDefinition, ThriftStatement, TypedefDefinition, UnionDefinition } from '@creditkarma/thrift-parser';
+import { IRenderer, IRenderState } from '../../types';
+export declare function renderImports(statements: Array<ThriftStatement>, state: IRenderState): Array<ts.Statement>;
+export declare function renderConst(statement: ConstDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function renderTypeDef(statement: TypedefDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function renderEnum(statement: EnumDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function renderStruct(statement: StructDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function renderException(statement: ExceptionDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function renderUnion(statement: UnionDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function renderService(statement: ServiceDefinition, state: IRenderState): Array<ts.Statement>;
+export declare const renderer: IRenderer;

@@ -1,0 +1,12 @@
+import * as ts from 'typescript';
+import { FieldDefinition, FunctionType } from '@creditkarma/thrift-parser';
+import { TApplicationException, TProtocolException } from './types';
+import { IRenderState } from '../../types';
+export * from '../shared/utils';
+export declare function coerceType(valueName: ts.Expression, fieldType: FunctionType): ts.Expression;
+export declare function getInitializerForField(objName: ts.Identifier, field: FieldDefinition, state: IRenderState, withDefault?: boolean, loose?: boolean): ts.Expression;
+export declare function isNotVoid(field: FieldDefinition): boolean;
+export declare function createProtocolException(type: TProtocolException, message: string): ts.NewExpression;
+export declare function throwProtocolException(type: TProtocolException, message: string): ts.ThrowStatement;
+export declare function createApplicationException(type: TApplicationException, message: string | ts.Expression): ts.NewExpression;
+export declare function throwApplicationException(type: TApplicationException, message: string): ts.ThrowStatement;

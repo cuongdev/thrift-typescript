@@ -1,0 +1,10 @@
+import { ContainerType, FieldDefinition, FieldType, FunctionType } from '@creditkarma/thrift-parser';
+import * as ts from 'typescript';
+import { DefinitionType, IRenderState } from '../../../types';
+declare type ValueAssignment = (valueName: ts.Identifier, field: FieldDefinition) => ts.Statement;
+export declare function assignmentForField(field: FieldDefinition, state: IRenderState, valueAssignment?: ValueAssignment): Array<ts.Statement>;
+export declare function defaultAssignment(saveName: ts.Identifier, readName: ts.Identifier, fieldType: FieldType, state: IRenderState): ts.Statement;
+export declare function assignmentForIdentifier(id: string, field: FieldDefinition, definition: DefinitionType, fieldType: FieldType, saveName: ts.Identifier, readName: ts.Identifier, state: IRenderState): Array<ts.Statement>;
+export declare function assignmentForFieldType(field: FieldDefinition, fieldType: FunctionType, saveName: ts.Identifier, readName: ts.Identifier, state: IRenderState): Array<ts.Statement>;
+export declare function loopOverContainer(field: FieldDefinition, fieldType: ContainerType, saveName: ts.Identifier, readName: ts.Identifier, state: IRenderState): Array<ts.Statement>;
+export {};

@@ -1,0 +1,11 @@
+import * as ts from 'typescript';
+import { FieldDefinition, UnionDefinition } from '@creditkarma/thrift-parser';
+import { IRenderState } from '../../../types';
+export declare function createReturnVariable(): ts.VariableStatement;
+export declare function createFieldIncrementer(): ts.VariableStatement;
+export declare function incrementFieldsSet(): ts.ExpressionStatement;
+export declare function fieldWithDefault(node: UnionDefinition): FieldDefinition | null;
+export declare function createFieldValidation(thenBlock: ts.Block): ts.IfStatement;
+export declare function throwBlockForFieldValidation(): ts.Block;
+export declare function assignmentForField(field: FieldDefinition, state: IRenderState): Array<ts.Statement>;
+export declare function createFieldAssignment(field: FieldDefinition, state: IRenderState): ts.IfStatement;

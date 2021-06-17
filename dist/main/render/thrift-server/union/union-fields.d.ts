@@ -1,0 +1,10 @@
+import * as ts from 'typescript';
+import { FieldDefinition, UnionDefinition } from '@creditkarma/thrift-parser';
+import { IRenderState } from '../../../types';
+export declare function renderUnionTypes(node: UnionDefinition, state: IRenderState, isExported: boolean): ts.Statement;
+export declare function fieldTypeAccess(node: UnionDefinition, field: FieldDefinition, state: IRenderState): string;
+export declare function unionTypeName(name: string, state: IRenderState, strict: boolean): string;
+export declare function renderUnionTypeName(name: string, state: IRenderState): string;
+export declare function fieldTypeName(nodeName: string, fieldName: string, strict: boolean): string;
+export declare function fieldInterfaceName(nodeName: string, fieldName: string, strict: boolean): string;
+export declare function renderUnionsForFields(node: UnionDefinition, state: IRenderState, isExported: boolean, isStrict: boolean): Array<ts.Statement>;

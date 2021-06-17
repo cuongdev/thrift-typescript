@@ -1,0 +1,17 @@
+import * as ts from 'typescript';
+import { FieldDefinition, InterfaceWithFields, SyntaxType } from '@creditkarma/thrift-parser';
+import { IRenderState } from '../../../types';
+export declare function renderOptional(field: FieldDefinition, loose?: boolean): ts.Token<ts.SyntaxKind.QuestionToken> | undefined;
+export declare function tokens(isExported: boolean): Array<ts.Token<ts.SyntaxKind.ExportKeyword>>;
+export declare function looseNameForStruct(node: InterfaceWithFields, state: IRenderState): string;
+export declare function classNameForStruct(node: InterfaceWithFields, state: IRenderState): string;
+export declare function strictNameForStruct(node: InterfaceWithFields, state: IRenderState): string;
+export declare function toolkitNameForStruct(node: InterfaceWithFields, state: IRenderState): string;
+export declare function className(name: string, state: IRenderState): string;
+export declare function looseName(name: string, type: SyntaxType, state: IRenderState): string;
+export declare function strictName(name: string, type: SyntaxType, state: IRenderState): string;
+export declare function toolkitName(name: string, state: IRenderState): string;
+export declare function extendsAbstract(): ts.HeritageClause;
+export declare function implementsInterface(node: InterfaceWithFields, state: IRenderState): ts.HeritageClause;
+export declare function createSuperCall(): ts.Statement;
+export declare function throwForField(field: FieldDefinition): ts.ThrowStatement | undefined;

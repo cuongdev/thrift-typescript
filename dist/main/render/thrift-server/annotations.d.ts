@@ -1,0 +1,10 @@
+import { Annotations, FieldDefinition, FunctionDefinition } from '@creditkarma/thrift-parser';
+import * as ts from 'typescript';
+export declare function renderAnnotations(annotations?: Annotations): ts.PropertyDeclaration;
+export declare function renderServiceAnnotations(annotations: Annotations): ts.VariableStatement;
+export declare function renderServiceAnnotationsProperty(): ts.PropertyDeclaration;
+export declare function renderServiceAnnotationsStaticProperty(): ts.PropertyDeclaration;
+export declare function renderFieldAnnotations(fields: Array<FieldDefinition>): ts.PropertyDeclaration;
+export declare function renderMethodAnnotations(functions: Array<FunctionDefinition>): ts.VariableStatement;
+export declare function renderMethodAnnotationsProperty(): ts.PropertyDeclaration;
+export declare function renderMethodAnnotationsStaticProperty(): ts.PropertyDeclaration;

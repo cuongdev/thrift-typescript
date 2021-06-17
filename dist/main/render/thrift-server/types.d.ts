@@ -1,0 +1,10 @@
+import * as ts from 'typescript';
+import { FunctionType } from '@creditkarma/thrift-parser';
+import { IRenderState } from '../../types';
+export * from '../shared/types';
+export declare type TProtocolException = 'UNKNOWN' | 'INVALID_DATA' | 'NEGATIVE_SIZE' | 'SIZE_LIMIT' | 'BAD_VERSION' | 'NOT_IMPLEMENTED' | 'DEPTH_LIMIT';
+export declare type TApplicationException = 'UNKNOWN' | 'UNKNOWN_METHOD' | 'INVALID_MESSAGE_TYPE' | 'WRONG_METHOD_NAME' | 'BAD_SEQUENCE_ID' | 'MISSING_RESULT' | 'INTERNAL_ERROR' | 'PROTOCOL_ERROR' | 'INVALID_TRANSFORM' | 'INVALID_PROTOCOL' | 'UNSUPPORTED_CLIENT_TYPE';
+export declare function protocolException(exceptionType: TProtocolException): ts.Identifier;
+export declare function applicationException(exceptionType: TApplicationException): ts.Identifier;
+export declare function thriftTypeForFieldType(fieldType: FunctionType, state: IRenderState): ts.Identifier;
+export declare function typeNodeForFieldType(fieldType: FunctionType, state: IRenderState, loose?: boolean): ts.TypeNode;
