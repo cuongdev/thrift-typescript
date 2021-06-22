@@ -170,3 +170,12 @@ export function throwForField(
         return undefined
     }
 }
+
+export function extendsAbstractError(): ts.HeritageClause {
+    return ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createExpressionWithTypeArguments(
+            [],
+            THRIFT_IDENTIFIERS.ErrorStructLike,
+        ),
+    ])
+}

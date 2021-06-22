@@ -517,22 +517,22 @@ function createProcessFunctionMethod(
 
 function createArgsVariable(funcDef: FunctionDefinition): Array<ts.Statement> {
     return [
-            createConstStatement(
-                COMMON_IDENTIFIERS.args,
-                ts.createTypeReferenceNode(
-                    ts.createIdentifier(createStructArgsName(funcDef)),
-                    undefined,
-                ),
-                ts.createCall(
-                    ts.createPropertyAccess(
-                        ts.createIdentifier(createStructArgsName(funcDef)),
-                        COMMON_IDENTIFIERS.read,
-                    ),
-                    undefined,
-                    [COMMON_IDENTIFIERS.input],
-                ),
+        createConstStatement(
+            COMMON_IDENTIFIERS.args,
+            ts.createTypeReferenceNode(
+                ts.createIdentifier(createStructArgsName(funcDef)),
+                undefined,
             ),
-        ]
+            ts.createCall(
+                ts.createPropertyAccess(
+                    ts.createIdentifier(createStructArgsName(funcDef)),
+                    COMMON_IDENTIFIERS.read,
+                ),
+                undefined,
+                [COMMON_IDENTIFIERS.input],
+            ),
+        ),
+    ]
 }
 
 function createElseForExceptions(
