@@ -27,6 +27,7 @@ export declare const THRIFT_IDENTIFIERS: {
     TProtocolException: ts.Identifier;
     InputBufferUnderrunError: ts.Identifier;
     StructLike: ts.Identifier;
+    ErrorStructLike: ts.Identifier;
 };
 export declare const THRIFT_TYPES: {
     STRUCT: ts.Identifier;

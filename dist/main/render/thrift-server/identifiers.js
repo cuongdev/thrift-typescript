@@ -32,6 +32,7 @@ exports.THRIFT_IDENTIFIERS = {
     TProtocolException: ts.createIdentifier('thrift.TProtocolException'),
     InputBufferUnderrunError: ts.createIdentifier('thrift.InputBufferUnderrunError'),
     StructLike: ts.createIdentifier('thrift.StructLike'),
+    ErrorStructLike: ts.createIdentifier('thrift.ErrorStructLike'),
 };
 exports.THRIFT_TYPES = {
     STRUCT: ts.createIdentifier('thrift.TType.STRUCT'),

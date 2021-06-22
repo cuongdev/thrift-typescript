@@ -8,7 +8,7 @@ const initializers_1 = require("../initializers");
 const types_1 = require("../types");
 const reader_1 = require("./reader");
 const utils_2 = require("./utils");
-function renderClass(node, state, isExported) {
+function renderClass(node, state, isExported, extendError = false) {
     const fields = [
         ...createFieldsForStruct(node, state),
         annotations_1.renderAnnotations(node.annotations),
@@ -26,7 +26,10 @@ function renderClass(node, state, isExported) {
     });
     const argsParameter = createArgsParameterForStruct(node, state);
     const ctor = utils_1.createClassConstructor([argsParameter], [utils_2.createSuperCall(), ...fieldAssignments]);
-    return ts.createClassDeclaration(undefined, utils_2.tokens(isExported), utils_2.classNameForStruct(node, state).replace('__NAMESPACE__', ''), [], [utils_2.extendsAbstract(), utils_2.implementsInterface(node, state)], [
+    return ts.createClassDeclaration(undefined, utils_2.tokens(isExported), utils_2.classNameForStruct(node, state).replace('__NAMESPACE__', ''), [], [
+        extendError ? utils_2.extendsAbstractError() : utils_2.extendsAbstract(),
+        utils_2.implementsInterface(node, state),
+    ], [
         ...fields,
         ctor,
         createStaticReadMethod(node, state),

@@ -15,3 +15,4 @@ export declare function extendsAbstract(): ts.HeritageClause;
 export declare function implementsInterface(node: InterfaceWithFields, state: IRenderState): ts.HeritageClause;
 export declare function createSuperCall(): ts.Statement;
 export declare function throwForField(field: FieldDefinition): ts.ThrowStatement | undefined;
+export declare function extendsAbstractError(): ts.HeritageClause;

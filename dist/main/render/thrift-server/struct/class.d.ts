@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import { FieldDefinition, InterfaceWithFields } from '@creditkarma/thrift-parser';
 import { IRenderState } from '../../../types';
-export declare function renderClass(node: InterfaceWithFields, state: IRenderState, isExported: boolean): ts.ClassDeclaration;
+export declare function renderClass(node: InterfaceWithFields, state: IRenderState, isExported: boolean, extendError?: boolean): ts.ClassDeclaration;
 export declare function createWriteMethod(node: InterfaceWithFields, state: IRenderState): ts.MethodDeclaration;
 export declare function createStaticWriteMethod(node: InterfaceWithFields, state: IRenderState): ts.MethodDeclaration;
 export declare function createStaticReadMethod(node: InterfaceWithFields, state: IRenderState): ts.MethodDeclaration;

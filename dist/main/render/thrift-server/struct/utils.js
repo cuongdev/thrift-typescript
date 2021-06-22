@@ -112,4 +112,10 @@ function throwForField(field) {
     }
 }
 exports.throwForField = throwForField;
+function extendsAbstractError() {
+    return ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createExpressionWithTypeArguments([], identifiers_1.THRIFT_IDENTIFIERS.ErrorStructLike),
+    ]);
+}
+exports.extendsAbstractError = extendsAbstractError;
 //# sourceMappingURL=utils.js.map
