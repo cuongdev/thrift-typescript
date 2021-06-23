@@ -26,12 +26,15 @@ import { typeNodeForFieldType } from '../types'
 import { interfaceNameForClass } from '../interface'
 
 import { IRenderState } from '../../../types'
+import { THRIFT_IDENTIFIERS } from '../../thrift-server/identifiers'
+import { createSuperCall } from '../../thrift-server/struct/utils'
 import { createReadMethod } from './read'
 import { createWriteMethod } from './write'
 
 export function renderStruct(
     node: InterfaceWithFields,
     state: IRenderState,
+    error: boolean = false,
 ): ts.ClassDeclaration {
     const fields: Array<ts.PropertyDeclaration> = createFieldsForStruct(
         node,
@@ -62,7 +65,9 @@ export function renderStruct(
     // Build the constructor body
     const ctor: ts.ConstructorDeclaration = createClassConstructor(
         argsParameter,
-        [...fieldAssignments],
+        error
+            ? [createSuperCall(), ...fieldAssignments]
+            : [...fieldAssignments],
     )
 
     // Build the `read` method
@@ -71,13 +76,17 @@ export function renderStruct(
     // Build the `write` method
     const writeMethod: ts.MethodDeclaration = createWriteMethod(node, state)
 
+    const heritage = ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createExpressionWithTypeArguments([], THRIFT_IDENTIFIERS.TException),
+    ])
+
     // export class <node.name> { ... }
     return ts.createClassDeclaration(
         undefined,
         [ts.createToken(ts.SyntaxKind.ExportKeyword)],
         node.name.value,
         [],
-        [], // heritage
+        error ? [heritage] : [], // heritage
         [...fields, ctor, writeMethod, readMethod],
     )
 }

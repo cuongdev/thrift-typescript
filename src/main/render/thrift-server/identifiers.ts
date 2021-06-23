@@ -34,6 +34,7 @@ export const THRIFT_IDENTIFIERS = {
     ),
     StructLike: ts.createIdentifier('thrift.StructLike'),
     ErrorStructLike: ts.createIdentifier('thrift.ErrorStructLike'),
+    TException: ts.createIdentifier('thrift.Thrift.TException'),
 }
 
 export const THRIFT_TYPES = {

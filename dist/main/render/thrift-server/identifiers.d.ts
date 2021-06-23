@@ -28,6 +28,7 @@ export declare const THRIFT_IDENTIFIERS: {
     InputBufferUnderrunError: ts.Identifier;
     StructLike: ts.Identifier;
     ErrorStructLike: ts.Identifier;
+    TException: ts.Identifier;
 };
 export declare const THRIFT_TYPES: {
     STRUCT: ts.Identifier;

@@ -9,5 +9,5 @@ export function renderException(
     node: ExceptionDefinition,
     state: IRenderState,
 ): ts.ClassDeclaration {
-    return renderStruct(node, state)
+    return renderStruct(node, state, true)
 }

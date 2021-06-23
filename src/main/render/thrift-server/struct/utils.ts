@@ -147,7 +147,9 @@ export function implementsInterface(
 
 export function createSuperCall(): ts.Statement {
     return ts.createStatement(
-        ts.createCall(COMMON_IDENTIFIERS.super, undefined, []),
+        ts.createCall(COMMON_IDENTIFIERS.super, undefined, [
+            ts.createIdentifier(`args.message || 'something went wrong'`),
+        ]),
     )
 }
 

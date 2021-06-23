@@ -7,16 +7,23 @@ const values_1 = require("../values");
 const identifiers_1 = require("../identifiers");
 const types_1 = require("../types");
 const interface_1 = require("../interface");
+const identifiers_2 = require("../../thrift-server/identifiers");
+const utils_2 = require("../../thrift-server/struct/utils");
 const read_1 = require("./read");
 const write_1 = require("./write");
-function renderStruct(node, state) {
+function renderStruct(node, state, error = false) {
     const fields = createFieldsForStruct(node, state);
     const fieldAssignments = node.fields.map(createFieldAssignment);
     const argsParameter = createArgsParameterForStruct(node);
-    const ctor = utils_1.createClassConstructor(argsParameter, [...fieldAssignments]);
+    const ctor = utils_1.createClassConstructor(argsParameter, error
+        ? [utils_2.createSuperCall(), ...fieldAssignments]
+        : [...fieldAssignments]);
     const readMethod = read_1.createReadMethod(node, state);
     const writeMethod = write_1.createWriteMethod(node, state);
-    return ts.createClassDeclaration(undefined, [ts.createToken(ts.SyntaxKind.ExportKeyword)], node.name.value, [], [], [...fields, ctor, writeMethod, readMethod]);
+    const heritage = ts.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
+        ts.createExpressionWithTypeArguments([], identifiers_2.THRIFT_IDENTIFIERS.TException),
+    ]);
+    return ts.createClassDeclaration(undefined, [ts.createToken(ts.SyntaxKind.ExportKeyword)], node.name.value, [], error ? [heritage] : [], [...fields, ctor, writeMethod, readMethod]);
 }
 exports.renderStruct = renderStruct;
 function createFieldsForStruct(node, state) {

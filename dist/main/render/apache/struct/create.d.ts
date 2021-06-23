@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import { FieldDefinition, InterfaceWithFields } from '@creditkarma/thrift-parser';
 import { IRenderState } from '../../../types';
-export declare function renderStruct(node: InterfaceWithFields, state: IRenderState): ts.ClassDeclaration;
+export declare function renderStruct(node: InterfaceWithFields, state: IRenderState, error?: boolean): ts.ClassDeclaration;
 export declare function createFieldsForStruct(node: InterfaceWithFields, state: IRenderState): Array<ts.PropertyDeclaration>;
 export declare function createArgsTypeForStruct(node: InterfaceWithFields): ts.TypeReferenceNode;
 export declare function assignmentForField(field: FieldDefinition): ts.Statement;

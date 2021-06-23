@@ -100,7 +100,9 @@ function implementsInterface(node, state) {
 }
 exports.implementsInterface = implementsInterface;
 function createSuperCall() {
-    return ts.createStatement(ts.createCall(identifiers_1.COMMON_IDENTIFIERS.super, undefined, []));
+    return ts.createStatement(ts.createCall(identifiers_1.COMMON_IDENTIFIERS.super, undefined, [
+        ts.createIdentifier(`args.message || 'something went wrong'`),
+    ]));
 }
 exports.createSuperCall = createSuperCall;
 function throwForField(field) {
